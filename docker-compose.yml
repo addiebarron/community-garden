@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  web:
+    build: svelte
+    ports:
+      - 5000:5000
+      - 3000:3000
+      - 24678:24678
+    environment:
+      - APP_ENV=dev
+      - VITE_API_BASE_URL=server:8000
+    volumes:
+      - ./svelte/src:/app/src
+      # - ./svelte/public/build/:/app/svelte/public/build/
+  server:
+    build: django
+    environment:
+      - APP_ENV=${APP_ENV}
+    ports:
+      - 9090:8000
+    volumes:
+      - ./django:/app
+    depends_on:
+      # - db
+      - redis
+    command: python manage.py runserver 0.0.0.0:8000
+  # db:
+  #   image: postgres
+  #   volumes:
+  #     - ./data/db:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_DB=postgres
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"

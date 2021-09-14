@@ -1,0 +1,18 @@
+[tool.poetry]
+authors = ["Addie <addiebarronemail@gmail.com>"]
+description = ""
+name = "community-garden"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.2.7"
+channels = "^3.0.4"
+channels-redis = "^3.3.0"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.5.7"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
