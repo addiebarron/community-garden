@@ -8,6 +8,7 @@
   }
 </script>
 
+<h1>Zoom</h1>
 <input
   type="range"
   step="0.1"

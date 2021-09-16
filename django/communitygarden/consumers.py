@@ -134,7 +134,7 @@ class GridConsumer(BaseConsumer):
         elif action == 'plant':
             if plot.has_soil():
                 if not plot.has_plant():
-                    plant_id = params["id"] - 1
+                    plant_id = params["id"]
                     # species = models.Species.get(name=params["name"])
                     species = models.PlantSpecies.objects.get(id=plant_id)
                     plot.plant = models.Plant(species=species)
@@ -146,6 +146,29 @@ class GridConsumer(BaseConsumer):
             else:
                 return self.server_error(
                     "A plot must have soil before a plant can be added."
+                )
+
+        elif action == 'uproot':
+            if plot.has_plant():
+                models.Plant.objects.get(id=plot.plant.id).delete()
+                plot.plant = None
+            else:
+                return self.server_error(
+                    "A plot must have soil before a plant can be added."
+                )
+
+        elif action == 'desoilify':
+            if plot.has_soil():
+                if not plot.has_plant():
+                    models.Soil.objects.get(id=plot.soil.id).delete()
+                    plot.soil = None
+                else:
+                    return self.server_error(
+                        "Soil cannot be removed if there's a plant."
+                    )
+            else:
+                return self.server_error(
+                    "There is no soil to remove."
                 )
 
         plot.full_clean()

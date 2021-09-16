@@ -15,27 +15,29 @@
 
 <aside>
   <section id="commands">
-    {#if $currentPlot}
+    {#if p}
       <h2>
-        {#if $currentPlot.acoord}<span class="acoord">{p.acoord}</span>
+        {#if p.acoord}<span class="acoord">{p.acoord}</span>
         {/if}commands
       </h2>
       <hr />
-      {#if $currentPlot.index != 0}
+      {#if p.index != 0}
         <p><code>Space</code>{"\t"}Unselect.</p>
       {/if}
-      {#each $currentPlot.commands as command, i}
-        <p><code>{i}</code>{"\t"}{command.description}</p>
+      {#each p.commands as command, i}
+        <button on:click={command.run(p)}
+          ><p><code>{i}</code>{"\t"}{command.description}</p></button
+        >
       {/each}
     {/if}
   </section>
   <section id="chat"><Settings /></section>
-  <section id="log" bind:this={logElement}>
+  <!-- <section id="log" bind:this={logElement}>
     <h2>log</h2>
     {#each $logHistory as log}
       <pre>{log}</pre>
     {/each}
-  </section>
+  </section> -->
 </aside>
 
 <style>
@@ -45,9 +47,9 @@
     display: grid;
     grid-template-areas:
       "commands"
-      "chat"
-      "log";
-    grid-template-rows: 1fr 1fr 1fr;
+      "chat";
+    /* "log"; */
+    grid-template-rows: 2fr 1fr;
   }
   aside section {
     padding: 10px;

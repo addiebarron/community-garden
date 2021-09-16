@@ -46,13 +46,17 @@
   }
   .grid-item:focus,
   .grid-item.selected {
-    background-color: rgb(255, 255, 136) !important;
+    box-shadow: inset 0 0 0 10px rgba(255, 230, 0, 0.308) !important;
   }
   .grid-item:hover {
     border: solid 1px rgba(0, 0, 0, 0.3);
   }
   .grid-item.with-soil {
     background-color: rgb(139, 120, 117);
+  }
+
+  .grid-item * {
+    pointer-events: none;
   }
   .grid-item span.water {
     display: block;
@@ -61,7 +65,7 @@
     left: 0;
   }
   .grid-item span.emoji {
-    font-size: 20px;
+    font-size: 2.5em;
     position: absolute;
     top: 50%;
     left: 50%;

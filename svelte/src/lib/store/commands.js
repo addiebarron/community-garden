@@ -1,7 +1,7 @@
 import { sockets } from "./sockets";
 import { printPlotInfo } from "./data";
 
-const availableCommands = {
+const commands = {
   plantHere: {
     description: "Plant a new plant on this plot.",
     run(p) {
@@ -18,12 +18,42 @@ const availableCommands = {
     },
   },
 
+  uprootHere: {
+    description: "Uproot plant on this plot.",
+    run(p) {
+      const socketData = {
+        type: "update",
+        action: "uproot",
+        params: {
+          grid_x: p.coords[0],
+          grid_y: p.coords[1],
+        },
+      };
+      sockets.grid.send(JSON.stringify(socketData));
+    },
+  },
+
   addSoil: {
     description: "Add soil to this plot.",
     run(p) {
       const socketData = {
         type: "update",
         action: "soilify",
+        params: {
+          grid_x: p.coords[0],
+          grid_y: p.coords[1],
+        },
+      };
+      sockets.grid.send(JSON.stringify(socketData));
+    },
+  },
+
+  removeSoil: {
+    description: "Remove soil from this plot.",
+    run(p) {
+      const socketData = {
+        type: "update",
+        action: "desoilify",
         params: {
           grid_x: p.coords[0],
           grid_y: p.coords[1],
@@ -71,23 +101,27 @@ const availableCommands = {
 };
 
 export function getCommands(plot) {
-  const a = availableCommands;
-  const commands = [];
+  const available = [];
   if (plot.index != 0) {
-    commands.push(a.printPlotInfo);
+    available.push(commands.printPlotInfo);
   }
   if (plot.index == 20) {
-    commands.push(a.logARandomNumber);
+    available.push(commands.logARandomNumber);
   }
   if (plot.index == 0) {
-    commands.push(a.goToMyPage);
+    available.push(commands.goToMyPage);
   }
   if (!plot.soil) {
-    commands.push(a.addSoil);
-  } else if (!plot.plant) {
-    commands.push(a.plantHere);
-  } else if (plot.plant) {
-    commands.push(a.waterPlot);
+    available.push(commands.addSoil);
+  } else {
+    available.push(commands.waterPlot);
+    if (!plot.plant) {
+      available.push(commands.removeSoil);
+      available.push(commands.plantHere);
+    }
   }
-  return commands;
+  if (plot.plant) {
+    available.push(commands.uprootHere);
+  }
+  return available;
 }
