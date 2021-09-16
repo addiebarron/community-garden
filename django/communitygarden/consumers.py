@@ -6,6 +6,23 @@ from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
 from . import models
 
 
+class BaseConsumer(WebsocketConsumer):
+    def group_send(self, *args, **kwargs):
+        return a2s(self.channel_layer.group_send)(self.group_name, *args, **kwargs)
+
+    def group_add(self, *args, **kwargs):
+        return a2s(self.channel_layer.group_add)(self.group_name, self.channel_name)
+
+    def group_discard(self, *args, **kwargs):
+        return a2s(self.channel_layer.group_discard)(self.group_name, self.channel_name)
+
+    def server_error(self, message):
+        self.send({
+            "type": "server_error",
+            "message": message,
+        })
+
+
 class CursorConsumer(AsyncWebsocketConsumer):
     group_name = "cursor_group"
 
@@ -57,35 +74,32 @@ class CursorConsumer(AsyncWebsocketConsumer):
 
     # Notify room of cursor_disconnect
     async def send_cursor_disconnected(self, event):
-
         await self.send(text_data=json.dumps({
             'type': 'cursor_disconnected',
             'client': event['client'],
         }))
 
 
-class GridConsumer(WebsocketConsumer):
+class GridConsumer(BaseConsumer):
     group_name = 'grid_group'
 
     def connect(self):
         # Join room group
-        a2s(self.channel_layer.group_add)(self.group_name, self.channel_name)
+        self.group_add()
         # Accept the connection
         self.accept()
-        # Notify?
-        # Send all context data here? Or make separate DRF view for initial connect?
-        plots = list(models.Plot.objects.all().values())
-        self.send(text_data=json.dumps(
-            {'type': 'grid_populate', 'data': plots}))
-        # await self.send(text_data=json.dumps({"type": "grid_connected"}))
+        # Send grid data to the client
+        self.send_grid_populate()
+
+    def disconnect(self, close_code):
+        self.group_discard()
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        message_type = text_data_json['type']
+        # message_type = text_data_json['type']
 
-        if message_type == 'update':
-            print('received plant update message:', text_data_json)
-            self.update_plot(text_data_json)
+        # if message_type == 'update':
+        self.update_plot(text_data_json)
 
     def update_plot(self, text_data_json):
         action = text_data_json['action']
@@ -96,29 +110,53 @@ class GridConsumer(WebsocketConsumer):
             grid_y=params['grid_y']
         )
 
-        new_plant = plot.plant
+        if action == 'water':
+            if plot.has_soil():
+                plot.soil.water_level = min(
+                    plot.soil.water_level + 3,  # TODO slightly random
+                    models.Soil.MAX_WATER_LEVEL
+                )
+                plot.soil.save()
+            else:
+                return self.server_error(
+                    "A plot must have soil in order to be watered."
+                )
 
-        if action == 'increment_plant':
-            new_plant = (new_plant + 1) % 10
+        elif action == 'soilify':
+            if not plot.has_soil():
+                plot.soil = models.Soil()
+                plot.soil.save()
+            else:
+                return self.server_error(
+                    "There is already soil in this plot."
+                )
 
-        if new_plant != plot.plant:
-            plot.plant = new_plant
-            plot.save()
+        elif action == 'plant':
+            if plot.has_soil():
+                if not plot.has_plant():
+                    plant_id = params["id"] - 1
+                    # species = models.Species.get(name=params["name"])
+                    species = models.PlantSpecies.objects.get(id=plant_id)
+                    plot.plant = models.Plant(species=species)
+                    plot.plant.save()
+                else:
+                    return self.server_error(
+                        "Cannot plant in the same plot as another plant."
+                    )
+            else:
+                return self.server_error(
+                    "A plot must have soil before a plant can be added."
+                )
 
-            a2s(self.channel_layer.group_send)(
-                self.group_name,
-                {
-                    'type': 'send_grid_update',
-                    'grid_x': params['grid_x'],
-                    'grid_y': params['grid_y'],
-                    'plant': plot.plant,
-                }
-            )
+        plot.full_clean()
+        plot.save()
 
-    def disconnect(self, close_code):
-        a2s(self.channel_layer.group_discard)(
-            self.group_name, self.channel_name
-        )
+        self.group_send({
+            'type': 'send_grid_update',
+            'grid_x': params['grid_x'],
+            'grid_y': params['grid_y'],
+            'plot': plot.as_dict(),
+        })
 
     def send_grid_update(self, event):
         # Push changes to all connected clients
@@ -126,5 +164,12 @@ class GridConsumer(WebsocketConsumer):
             'type': 'grid_update',
             'grid_x': event['grid_x'],
             'grid_y': event['grid_y'],
-            'plant': event['plant'],
+            'plot': event['plot'],
+        }))
+
+    def send_grid_populate(self):
+        plots = [plot.as_dict() for plot in models.Plot.objects.all()]
+        self.send(text_data=json.dumps({
+            'type': 'grid_populate',
+            'data': plots
         }))

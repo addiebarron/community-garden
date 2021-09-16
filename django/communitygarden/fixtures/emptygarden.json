@@ -1,0 +1,3602 @@
+[
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 1,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 2,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 3,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 4,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 5,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 6,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 7,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 8,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 9,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 10,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 11,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 12,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 13,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 14,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 15,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 16,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 17,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 18,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 19,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 1,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 2,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 3,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 4,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 5,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 6,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 7,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 8,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 9,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 10,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 11,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 12,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 13,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 14,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 15,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 16,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 17,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 18,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 19,
+      "soil": null,
+      "plant": null
+    }
+  },
+  {
+    "model": "communitygarden.plot",
+    "fields": {
+      "grid_x": 20,
+      "grid_y": 20,
+      "soil": null,
+      "plant": null
+    }
+  }
+]

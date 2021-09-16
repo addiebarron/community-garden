@@ -13,6 +13,7 @@
     prefersReducedMotion,
   } from "$lib/store/settings";
   import { populateGarden, DATA } from "$lib/store/data";
+  import { getCommands } from "$lib/store/commands";
 
   // Handlers are two-way bound with index.html
   export const gridSocketHandlers = {
@@ -121,12 +122,16 @@
   function handleGridSocketMessage(e) {
     const data = JSON.parse(e.data);
     if (data.type == "grid_populate") {
+      console.log(data.data);
       DATA.set(populateGarden(data.data));
     } else if (data.type == "grid_update") {
+      console.log("grid_update:", data);
       DATA.update((garden) => {
         return garden.map((p) => {
           if (p.coords[0] == data.grid_x && p.coords[1] == data.grid_y) {
-            p.plant = data.plant;
+            p.plant = data.plot.plant;
+            p.soil = data.plot.soil;
+            p.commands = getCommands(p);
           }
           return p;
         });

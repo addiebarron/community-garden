@@ -1,0 +1,82 @@
+[
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 0,
+      "name": "Rose",
+      "emoji": "\ud83c\udf39"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 1,
+      "name": "Hibiscus",
+      "emoji": "\ud83c\udf3a"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 2,
+      "name": "Sunflower",
+      "emoji": "\ud83c\udf3b"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 3,
+      "name": "Daisy",
+      "emoji": "\ud83c\udf3c"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 4,
+      "name": "Tulip",
+      "emoji": "\ud83c\udf37"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 5,
+      "name": "Sprout",
+      "emoji": "\ud83c\udf31"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 6,
+      "name": "Tree",
+      "emoji": "\ud83c\udf33"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 7,
+      "name": "Cactus",
+      "emoji": "\ud83c\udf35"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 8,
+      "name": "Wheat",
+      "emoji": "\ud83c\udf3e"
+    }
+  },
+  {
+    "model": "communitygarden.plantspecies",
+    "fields": {
+      "id": 9,
+      "name": "Clover",
+      "emoji": "\ud83c\udf40"
+    }
+  }
+]

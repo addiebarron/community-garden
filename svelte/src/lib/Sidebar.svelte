@@ -2,6 +2,7 @@
   import Settings from "./Settings.svelte";
   import { currentPlot } from "$lib/store/data";
   import { logHistory } from "$lib/store/settings";
+  import { allSocketsConnected } from "$lib/store/sockets";
 
   $: p = $currentPlot;
 
@@ -14,15 +15,16 @@
 
 <aside>
   <section id="commands">
-    {#if p}
+    {#if $currentPlot}
       <h2>
-        {#if p.acoord}<span class="acoord">{p.acoord}</span> {/if}commands
+        {#if $currentPlot.acoord}<span class="acoord">{p.acoord}</span>
+        {/if}commands
       </h2>
       <hr />
-      {#if p.index != 0}
+      {#if $currentPlot.index != 0}
         <p><code>Space</code>{"\t"}Unselect.</p>
       {/if}
-      {#each p.commands as command, i}
+      {#each $currentPlot.commands as command, i}
         <p><code>{i}</code>{"\t"}{command.description}</p>
       {/each}
     {/if}

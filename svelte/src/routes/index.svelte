@@ -13,7 +13,6 @@
   onMount(() => {
     Object.entries(sockets).forEach(([name, socket]) => {
       socket.connect((e) => {
-        console.log("Socket connected:", socket._socket);
         socket.onMessage(gridSocketHandlers[name]);
       });
     });
