@@ -1,21 +1,13 @@
 ### General
 
 .DS_Store
+.vscode
 .env
 
-### Svelte
-
-node_modules/
-svelte/public/build/
-
-### Django
-
-*.log
-*.pot
-*.pyc
-__pycache__
-db.sqlite3
-media
+### Database
+/data
 
 # Backup files # 
 *.bak 
+
+# (More specific ignore patterns in svelte+django subdirectories)

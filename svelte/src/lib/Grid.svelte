@@ -1,27 +1,18 @@
 <script>
-  import { getContext, onMount } from "svelte";
-
   import GridItem from "./GridItem.svelte";
   import CursorBox from "./CursorBox.svelte";
 
-  import { coordsToIndex, indexToCoords } from "$lib/util";
+  import { coordsToIndex } from "$lib/store/util";
+  import { sockets } from "$lib/store/sockets";
+  import { Cursor, clientCursor } from "$lib/store/cursor";
   import {
-    // Settings
     GRID_X,
     GRID_Y,
     ZOOM_LEVEL,
     controlsMap,
     prefersReducedMotion,
-    // Cursor
-    Cursor,
-    clientCursor,
-    // Garden
-    populateGarden,
-    gardenData,
-    addGlobalCommand,
-    // Sockets
-    sockets,
-  } from "$lib/store";
+  } from "$lib/store/settings";
+  import { populateGarden, DATA } from "$lib/store/data";
 
   // Handlers are two-way bound with index.html
   export const gridSocketHandlers = {
@@ -35,7 +26,7 @@
   // Settings
   $: reduceMotion = $prefersReducedMotion;
   $: gridSize = 100 * $ZOOM_LEVEL;
-  $: garden = $gardenData;
+  $: garden = $DATA;
 
   // Cursors
   let otherCursors = [
@@ -70,9 +61,7 @@
         })
       );
     } catch (err) {
-      if (err instanceof TypeError) {
-        void 0;
-      } else {
+      if (!(err instanceof TypeError)) {
         throw err;
       }
     }
@@ -132,9 +121,9 @@
   function handleGridSocketMessage(e) {
     const data = JSON.parse(e.data);
     if (data.type == "grid_populate") {
-      gardenData.set(populateGarden(data.data));
+      DATA.set(populateGarden(data.data));
     } else if (data.type == "grid_update") {
-      gardenData.update((garden) => {
+      DATA.update((garden) => {
         return garden.map((p) => {
           if (p.coords[0] == data.grid_x && p.coords[1] == data.grid_y) {
             p.plant = data.plant;
@@ -152,38 +141,49 @@
   on:mousedown={enableGridPointerEvents} />
 
 <main>
+  <div class="overlay" />
   <div class="grid-container" bind:this={gridContainer}>
     <div
       class="grid"
       style="grid-template-columns: repeat({GRID_X}, {gridSize}px); grid-template-rows: repeat({GRID_Y}, {gridSize}px)"
     >
-      {#each garden as { element, plant, acoord }, i}
+      {#each garden as plot, i}
         {#if i != 0}
           <GridItem
-            bind:root={element}
+            bind:root={plot.element}
             on:mouseup={handlePlotMouseUp}
             {i}
-            {plant}
-            {acoord}
+            {plot}
           />
         {/if}
       {/each}
       {#each otherCursors as cur, i}
         <CursorBox {cur} {i} />
       {/each}
+      <!-- <CursorBox cur={{ cursor: clientCursor, client: "user" }} /> -->
     </div>
   </div>
 </main>
 
 <style>
   main {
+    position: relative;
     grid-area: main;
     overflow: scroll;
     /* hide scrollbars */
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    box-shadow: inset 0 0 0px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
   }
+  /* main .overlay {
+    position: sticky;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  } */
   main::-webkit-scrollbar {
     display: none;
   }

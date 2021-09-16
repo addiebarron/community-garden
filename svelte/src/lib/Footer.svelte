@@ -1,5 +1,5 @@
 <script>
-  import { currentInfo } from "$lib/store";
+  import { currentInfo } from "$lib/store/data";
 </script>
 
 <footer>

@@ -1,7 +1,7 @@
-<div class="overlay">Connecting to server...</div>
+<div>Connecting to server...</div>
 
 <style>
-  .overlay {
+  div {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,5 +12,6 @@
     font-size: 50px;
     padding-top: 50vh;
     line-height: 0px;
+    z-index: 10;
   }
 </style>

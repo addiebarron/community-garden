@@ -1,4 +1,4 @@
-import { GRID_X, GRID_Y } from "./store";
+import { GRID_X, GRID_Y } from "./settings";
 
 export function coordsToIndex(x, y) {
   if (y * x == 0) return 0;
@@ -25,4 +25,9 @@ export function bound(x, y) {
     Math.min(Math.max(1, x), GRID_X),
     Math.min(Math.max(1, y), GRID_Y),
   ];
+}
+
+export function getAlphaCoord(x, y) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return !!alphabet[x - 1] ? alphabet[x - 1] + y : "";
 }

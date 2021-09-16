@@ -1,5 +1,5 @@
 <script>
-  import { ZOOM_LEVEL } from "$lib/store";
+  import { ZOOM_LEVEL } from "$lib/store/settings";
 
   let inputZoomLevel = 1;
 

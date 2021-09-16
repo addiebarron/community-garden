@@ -1,13 +1,12 @@
 <script>
-  import Overlay from "$lib/Overlay.svelte";
+  import LoadingOverlay from "$lib/LoadingOverlay.svelte";
   import Grid from "$lib/Grid.svelte";
   import Sidebar from "$lib/Sidebar.svelte";
   import Footer from "$lib/Footer.svelte";
 
-  import { sockets, allSocketsConnected } from "$lib/store.js";
+  import { sockets, allSocketsConnected } from "$lib/store/sockets";
 
   import { onMount } from "svelte";
-  import { derived } from "svelte/store";
 
   let gridSocketHandlers;
 
@@ -22,7 +21,7 @@
 </script>
 
 {#if !$allSocketsConnected}
-  <Overlay />
+  <LoadingOverlay />
 {/if}
 <Grid bind:gridSocketHandlers />
 <Sidebar />

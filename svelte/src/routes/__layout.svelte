@@ -1,9 +1,13 @@
 <script>
   import Nav from "$lib/Nav.svelte";
-  import Grid from "$lib/Grid.svelte";
-  import Sidebar from "$lib/Sidebar.svelte";
-  import Footer from "$lib/Footer.svelte";
+  import { DEV } from "$lib/store/settings";
+
+  const title = DEV ? "communitygardenDEV" : "Community Garden";
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
 
 <div id="app">
   <Nav />

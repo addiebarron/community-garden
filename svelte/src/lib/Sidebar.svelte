@@ -1,12 +1,9 @@
 <script>
   import Settings from "./Settings.svelte";
-  import { clientCursor, gardenData, logHistory } from "$lib/store";
-  import { getContext, onMount } from "svelte";
-  import { get } from "svelte/store";
+  import { currentPlot } from "$lib/store/data";
+  import { logHistory } from "$lib/store/settings";
 
-  let plotnum = clientCursor.index;
-
-  $: currentPlot = $gardenData[$plotnum];
+  $: p = $currentPlot;
 
   let logElement;
   $: $logHistory, scrollLogToBottom();
@@ -17,15 +14,16 @@
 
 <aside>
   <section id="commands">
-    {#if currentPlot}
+    {#if p}
       <h2>
-        {#if currentPlot.acoord}{currentPlot.acoord} - {/if}commands:
+        {#if p.acoord}<span class="acoord">{p.acoord}</span> {/if}commands
       </h2>
-      {#if $plotnum != 0}
-        <pre>Space: {"\t"}unselect</pre>
+      <hr />
+      {#if p.index != 0}
+        <p><code>Space</code>{"\t"}Unselect.</p>
       {/if}
-      {#each currentPlot.commands as command, i}
-        <pre>{i}: {"\t"}{command.name}</pre>
+      {#each p.commands as command, i}
+        <p><code>{i}</code>{"\t"}{command.description}</p>
       {/each}
     {/if}
   </section>
@@ -56,8 +54,20 @@
     grid-area: commands;
     background: rgb(255, 231, 235);
   }
-  #commands pre {
-    font-size: 16px;
+  #commands code {
+    padding: 2px;
+    background: gainsboro;
+    border: solid 1px lightgrey;
+    border-radius: 3px;
+  }
+  #commands .acoord {
+    padding: 5px 5px 3px 5px;
+    background: white;
+    border: solid 1px gainsboro;
+  }
+  #commands hr {
+    border-top: solid 1px rgba(0, 0, 0, 0.2);
+    border-bottom: 0;
   }
   #chat {
     grid-area: chat;

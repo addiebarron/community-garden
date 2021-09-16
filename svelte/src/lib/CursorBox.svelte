@@ -1,15 +1,18 @@
 <script>
-  import { ZOOM_LEVEL } from "$lib/store";
+  import { ZOOM_LEVEL } from "$lib/store/settings";
 
   export let cur, i;
 
   const { client, cursor } = cur;
   let x = cursor.x,
     y = cursor.y;
+  //const isUser = client == "user";
 
+  // Color
   const hue = (i * 222) % 360;
-  const color = `hsl(${hue}, 100%, 50%)`;
+  const color = `hsl(${hue}, 85%, 60%)`;
 
+  // Size
   $: size = 100 * $ZOOM_LEVEL;
 </script>
 

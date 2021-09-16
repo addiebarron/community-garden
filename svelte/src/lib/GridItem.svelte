@@ -1,7 +1,7 @@
 <script>
-  import { GRID_X, GRID_Y } from "$lib/store";
+  import { GRID_X, GRID_Y } from "$lib/store/settings";
 
-  export let i, root, plant, acoord;
+  export let i, root, plot;
 
   function randomColor() {
     let vals = [];
@@ -11,7 +11,7 @@
     vals[3] = (Math.random() / 10 + 0.2).toFixed(2);
 
     // return `rgba(${vals.join(",")})`;
-    return `rgba(0,0,0,${Math.random() / 5})`;
+    return;
   }
 
   let corners = {
@@ -35,10 +35,10 @@
   class:grid-item-bottom={corners.bottom}
   class:grid-item-left={corners.left}
   data-index={i}
-  style="background-color: {i != 74 ? randomColor() : '#ffbb8e'};"
+  style="background-color: rgba(0,0,0,{Math.random() / 5});"
 >
-  {acoord}
-  {emojis[plant]}
+  {plot.acoord}
+  {emojis[plot.plant]}
 </div>
 
 <style>
