@@ -9,6 +9,14 @@
     bottom: i > GRID_X * (GRID_Y - 1),
     left: i % GRID_X == 1,
   };
+
+  function r(n) {
+    return n * (Math.random() - 0.5);
+  }
+
+  // $: bg = plot.soil
+  //   ? `hsl(8, 9%, ${60 - plot.soil.water_level / 3}%)`
+  //   : `hsl(120, 50%, ${70}%)`;
 </script>
 
 <div
@@ -30,29 +38,27 @@
   {/if}
   {#if plot.plant}
     <span class="emoji">{plot.plant.species.emoji}</span>
+    <span class="health">💖{plot.plant.health}%</span>
   {/if}
 </div>
 
 <style>
   .grid-item {
     --edge-border: dashed 5px rgb(36, 36, 36);
-    /* center text */
-    text-align: center;
-    padding-top: 50%;
-    line-height: 0;
     position: relative;
     color: white;
-    border: solid 0.5px rgb(68, 68, 68);
+    /* box-shadow: 0 0 0 1px black; */
+    outline: solid 1px black;
+  }
+  .grid-item.with-soil {
+    background-color: rgb(124, 98, 96);
+  }
+  .grid-item:hover {
+    box-shadow: inset 0 0 0 10px rgba(255, 230, 0, 0.1);
   }
   .grid-item:focus,
   .grid-item.selected {
-    box-shadow: inset 0 0 0 10px rgba(255, 230, 0, 0.308) !important;
-  }
-  .grid-item:hover {
-    border: solid 1px rgba(0, 0, 0, 0.3);
-  }
-  .grid-item.with-soil {
-    background-color: rgb(139, 120, 117);
+    box-shadow: inset 0 0 0 10px rgba(255, 230, 0, 0.35);
   }
 
   .grid-item * {
@@ -61,7 +67,13 @@
   .grid-item span.water {
     display: block;
     position: absolute;
-    bottom: 0.5em;
+    bottom: 0em;
+    left: 0;
+  }
+  .grid-item span.health {
+    display: block;
+    position: absolute;
+    bottom: 1.1em;
     left: 0;
   }
   .grid-item span.emoji {

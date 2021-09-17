@@ -26,7 +26,7 @@
       {/if}
       {#each p.commands as command, i}
         <button on:click={command.run(p)}
-          ><p><code>{i}</code>{"\t"}{command.description}</p></button
+          ><code>{i}</code>{"\t"}{command.description}</button
         >
       {/each}
     {/if}
@@ -59,10 +59,17 @@
     background: rgb(255, 231, 235);
   }
   #commands code {
-    padding: 2px;
+    padding: 2px 5px;
     background: gainsboro;
     border: solid 1px lightgrey;
     border-radius: 3px;
+  }
+  #commands button {
+    font-family: inherit;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+    margin: 5px 0;
   }
   #commands .acoord {
     padding: 5px 5px 3px 5px;
@@ -76,10 +83,5 @@
   #chat {
     grid-area: chat;
     background: rgb(255, 255, 231);
-  }
-  #log {
-    overflow-y: scroll;
-    grid-area: log;
-    background: rgb(243, 231, 255);
   }
 </style>

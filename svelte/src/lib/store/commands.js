@@ -79,7 +79,7 @@ const commands = {
   },
 
   printPlotInfo: {
-    description: "Show information about this plot.",
+    description: "Show info about this plot.",
     run(p) {
       printPlotInfo(p);
     },
@@ -102,26 +102,25 @@ const commands = {
 
 export function getCommands(plot) {
   const available = [];
-  if (plot.index != 0) {
-    available.push(commands.printPlotInfo);
-  }
-  if (plot.index == 20) {
-    available.push(commands.logARandomNumber);
-  }
   if (plot.index == 0) {
     available.push(commands.goToMyPage);
-  }
-  if (!plot.soil) {
-    available.push(commands.addSoil);
   } else {
-    available.push(commands.waterPlot);
-    if (!plot.plant) {
-      available.push(commands.removeSoil);
-      available.push(commands.plantHere);
+    available.push(commands.printPlotInfo);
+    if (plot.index == 20) {
+      available.push(commands.logARandomNumber);
     }
-  }
-  if (plot.plant) {
-    available.push(commands.uprootHere);
+    if (!plot.soil) {
+      available.push(commands.addSoil);
+    } else {
+      available.push(commands.waterPlot);
+      if (!plot.plant) {
+        available.push(commands.removeSoil);
+        available.push(commands.plantHere);
+      }
+    }
+    if (plot.plant) {
+      available.push(commands.uprootHere);
+    }
   }
   return available;
 }

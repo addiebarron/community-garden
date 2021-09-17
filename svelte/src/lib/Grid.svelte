@@ -150,7 +150,7 @@
   <div class="grid-container" bind:this={gridContainer}>
     <div
       class="grid"
-      style="grid-template-columns: repeat({GRID_X}, {gridSize}px); grid-template-rows: repeat({GRID_Y}, {gridSize}px)"
+      style="grid-template-columns: repeat({GRID_X}, {gridSize}px); grid-template-rows: repeat({GRID_Y}, {gridSize}px);"
     >
       {#each garden as plot, i}
         {#if i != 0}
@@ -179,6 +179,7 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
+    background-color: rgb(203, 255, 203);
   }
   /* main .overlay {
     position: sticky;
@@ -192,12 +193,13 @@
   main::-webkit-scrollbar {
     display: none;
   }
-  .grid {
-    display: grid;
-    position: relative;
-  }
   .grid-container {
     width: 1000px;
     height: 1000px;
+  }
+  .grid {
+    display: grid;
+    grid-gap: 1px;
+    position: relative;
   }
 </style>

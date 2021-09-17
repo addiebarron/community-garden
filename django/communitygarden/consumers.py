@@ -1,9 +1,11 @@
 # chat/consumers.py
 import json
+import datetime
+from pytz import UTC
 from asgiref.sync import async_to_sync as a2s
 from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
 
-from . import models
+from . import models, settings
 
 
 class BaseConsumer(WebsocketConsumer):
@@ -83,11 +85,20 @@ class CursorConsumer(AsyncWebsocketConsumer):
 class GridConsumer(BaseConsumer):
     group_name = 'grid_group'
 
+    def grow(self, seconds):
+        grow_rate = 10
+
+        n = seconds // grow_rate
+        print(seconds, "seconds since last connection.")
+        print("growing", n, "times")
+
     def connect(self):
         # Join room group
         self.group_add()
         # Accept the connection
         self.accept()
+        # Update the grid based on the last time someone logged in
+        self.calculate_growth()
         # Send grid data to the client
         self.send_grid_populate()
 
@@ -100,6 +111,22 @@ class GridConsumer(BaseConsumer):
 
         # if message_type == 'update':
         self.update_plot(text_data_json)
+
+    def send_grid_update(self, event):
+        # Push changes to all connected clients
+        self.send(text_data=json.dumps({
+            'type': 'grid_update',
+            'grid_x': event['grid_x'],
+            'grid_y': event['grid_y'],
+            'plot': event['plot'],
+        }))
+
+    def send_grid_populate(self):
+        plots = [plot.as_dict() for plot in models.Plot.objects.all()]
+        self.send(text_data=json.dumps({
+            'type': 'grid_populate',
+            'data': plots
+        }))
 
     def update_plot(self, text_data_json):
         action = text_data_json['action']
@@ -131,6 +158,20 @@ class GridConsumer(BaseConsumer):
                     "There is already soil in this plot."
                 )
 
+        elif action == 'desoilify':
+            if plot.has_soil():
+                if not plot.has_plant():
+                    models.Soil.objects.get(id=plot.soil.id).delete()
+                    plot.soil = None
+                else:
+                    return self.server_error(
+                        "Soil cannot be removed if there's a plant."
+                    )
+            else:
+                return self.server_error(
+                    "There is no soil to remove."
+                )
+
         elif action == 'plant':
             if plot.has_soil():
                 if not plot.has_plant():
@@ -157,20 +198,6 @@ class GridConsumer(BaseConsumer):
                     "A plot must have soil before a plant can be added."
                 )
 
-        elif action == 'desoilify':
-            if plot.has_soil():
-                if not plot.has_plant():
-                    models.Soil.objects.get(id=plot.soil.id).delete()
-                    plot.soil = None
-                else:
-                    return self.server_error(
-                        "Soil cannot be removed if there's a plant."
-                    )
-            else:
-                return self.server_error(
-                    "There is no soil to remove."
-                )
-
         plot.full_clean()
         plot.save()
 
@@ -181,18 +208,36 @@ class GridConsumer(BaseConsumer):
             'plot': plot.as_dict(),
         })
 
-    def send_grid_update(self, event):
-        # Push changes to all connected clients
-        self.send(text_data=json.dumps({
-            'type': 'grid_update',
-            'grid_x': event['grid_x'],
-            'grid_y': event['grid_y'],
-            'plot': event['plot'],
-        }))
+    def calculate_growth(self):
+        now = datetime.datetime.now(tz=UTC)
+        this_connection = models.Connection(timestamp=now)
 
-    def send_grid_populate(self):
-        plots = [plot.as_dict() for plot in models.Plot.objects.all()]
-        self.send(text_data=json.dumps({
-            'type': 'grid_populate',
-            'data': plots
-        }))
+        if models.Connection.objects.count() > 0:
+            # Get time since the last connection
+            last = models.Connection.objects.latest('timestamp').timestamp
+            seconds_since_last_connection = (now - last).seconds
+
+            # Calculate the number of times the garden should have grown
+            n = int(seconds_since_last_connection //
+                    (86400/settings.GROWTH_RATE))
+
+            # Run the grow function n times
+            print(seconds_since_last_connection,
+                  "seconds since last connection.")
+            print("growing garden", n, "times.")
+            for i in range(n):
+                self.grow_garden()
+
+        # Save the current connection as the most recent connection
+        this_connection.save()
+
+    def grow_garden(self):
+        plots = models.Plot.objects.all()
+        for plot in plots:
+            if plot.has_soil():
+                plot.soil.water_level -= 1
+                plot.soil.full_clean()
+                plot.soil.save()
+                plot.save()
+
+        # self.send_grid_populate()

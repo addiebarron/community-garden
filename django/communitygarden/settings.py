@@ -137,3 +137,10 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+
+def every_n_seconds(n):
+    return 86400 / n
+
+
+GROWTH_RATE = every_n_seconds(10)  # Grow this many times per day

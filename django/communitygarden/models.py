@@ -2,6 +2,24 @@ from django.db import models as m
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
+class Connection(m.Model):
+    """
+    Table containing information about the history of
+    connections to the app.
+    """
+    timestamp = m.DateTimeField(auto_now_add=True)
+
+    # Store only the last 10 connections
+    def save(self, *args, **kwargs):
+        objects = Connection.objects.order_by('timestamp')
+        count = objects.count()
+        limit = 10
+        if count >= limit:
+            [obj.delete() for obj in objects[0:count-limit+1]]
+
+        super(Connection, self).save(*args, **kwargs)
+
+
 class Plot(m.Model):
     """
     grid position
@@ -137,7 +155,7 @@ class PlantSpecies(m.Model):
 
 # class HistoryEntry(m.Model):
     """
-    An entry in the history of the garden. Contains information about 
+    An entry in the history of the garden. Contains information about
     the user, the action taken, the action target, and a timestamp/
 
     timestamp
