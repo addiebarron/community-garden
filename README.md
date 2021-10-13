@@ -1,107 +1,44 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Community Garden
 
----
+🌻🌼🌱🌷🌻🌼🌱🌷🌻🌼🌱🌷🌻🌼🌱🌷🌻🌼🌱🌷🌻🌼🌱🌷🌻🌼🌱🌷🌻
 
-# svelte app
+**Community Garden is an experimental game and an exploration of web community models.**
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+It is also a learning project designed to allow me to explore full-stack app development, specifically in integrating a modern frontend web framework with a robust backend, as well as best practices in UX & accessibility, authentication & security, Python OOP, and general systems design. The app's frontend (built in SvelteKit) talks to a Django backend, which uses PostgreSQL as its database. Within the Django backend, [Channels](https://channels.readthedocs.io/en/stable/) handles WebSocket connections.
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## Interface
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+The UI is compromised of 4 main parts:
+
+- Garden grid
+  - Each grid square ("plot") can optionally contain soil and a plant
+    - A plant cannot be added without adding soil
+    - Soil has an associated water level. Water can be added, and it decreases naturally over time
+    - Each plant has an associated health level, which increases or decreases based on factors including water level
+  - Each player has a cursor that can be moved by clicking or using the arrow keys
+    - Players can see other players' cursors
+- Command list
+  - Displays the commands associated with the currently selected square
+  - The command list is updated as the cursor moves
+  - Each command can be executed be clicking it, or by pressing the number key listed next to the command
+- History log
+  - A running log of all actions taken within the game
+  - Each entry lists the timestamp and user associated with the action
+- Chat
+  - A simple real-time chat window for all users
+
+## Design philosophy
+
+The design of this app is informed by my experience in game studies and critical theory. I hoped to create an experience that encourages communitarian, mutualistic, and coordinated behavior through its design, rather than through strict guidelines or moderation (though some version of these will probably need to come into play eventually).
+
+The nature of the app requires users to coordinate their tending of the plants, since any user can take any action toward any plant, but over-tending (e.g. through overwatering) will cause a plant to die. If a player takes intentionally destructive action toward the garden, their actions will be logged publicly and kept in record forever. I'll probably add a voting system for removing users permanently, but that is outside the current scope of the project.
+
+## Development
+
+The app uses Docker for development. There is not currently a production version.
+
+To build and run the app locally, run
+
 ```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
+docker-compose up -d
 ```
