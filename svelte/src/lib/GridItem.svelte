@@ -43,8 +43,10 @@
 </div>
 
 <style>
+  :root {
+    --edge-border: dashed 7px rgb(36, 36, 36);
+  }
   .grid-item {
-    --edge-border: dashed 5px rgb(36, 36, 36);
     position: relative;
     color: white;
     /* box-shadow: 0 0 0 1px black; */
@@ -67,14 +69,14 @@
   .grid-item span.water {
     display: block;
     position: absolute;
-    bottom: 0em;
-    left: 0;
+    bottom: 0;
+    left: 2px;
   }
   .grid-item span.health {
     display: block;
     position: absolute;
     bottom: 1.1em;
-    left: 0;
+    left: 2px;
   }
   .grid-item span.emoji {
     font-size: 2.5em;

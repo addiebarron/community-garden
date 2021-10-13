@@ -143,4 +143,12 @@ def every_n_seconds(n):
     return 86400 / n
 
 
-GROWTH_RATE = every_n_seconds(10)  # Grow this many times per day
+def every_n_minutes(n):
+    return 1440 / n
+
+
+def every_n_hours(n):
+    return 24 / n
+
+
+GROWTH_RATE = every_n_hours(12)  # Grow this many times per day

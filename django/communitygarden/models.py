@@ -2,22 +2,23 @@ from django.db import models as m
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class Connection(m.Model):
+class Disconnection(m.Model):
     """
-    Table containing information about the history of
-    connections to the app.
+    Table containing information about the last
+    disconnection from the app.
     """
     timestamp = m.DateTimeField(auto_now_add=True)
+    used = m.BooleanField(default=False)
 
     # Store only the last 10 connections
     def save(self, *args, **kwargs):
-        objects = Connection.objects.order_by('timestamp')
+        objects = Disconnection.objects.order_by('timestamp')
         count = objects.count()
         limit = 10
         if count >= limit:
             [obj.delete() for obj in objects[0:count-limit+1]]
 
-        super(Connection, self).save(*args, **kwargs)
+        super(Disconnection, self).save(*args, **kwargs)
 
 
 class Plot(m.Model):
@@ -68,6 +69,15 @@ class Plot(m.Model):
             "plant": plant,
         }
 
+    # Store only the last 10 connections
+    def save(self, *args, **kwargs):
+        if self.has_soil():
+            self.soil.save()
+        if self.has_plant():
+            self.plant.save()
+
+        super(Plot, self).save(*args, **kwargs)
+
 
 class Soil(m.Model):
     """
@@ -77,7 +87,7 @@ class Soil(m.Model):
     soil type
     nutrient levels, npk
     """
-    MIN_WATER_LEVEL = 1
+    MIN_WATER_LEVEL = 0
     MAX_WATER_LEVEL = 100
     # soil_type = m.TextField(choices=[
     #     ("SAND", 4),

@@ -7,6 +7,8 @@ from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
 
 from . import models, settings
 
+import inspect
+
 
 class BaseConsumer(WebsocketConsumer):
     def group_send(self, *args, **kwargs):
@@ -85,13 +87,6 @@ class CursorConsumer(AsyncWebsocketConsumer):
 class GridConsumer(BaseConsumer):
     group_name = 'grid_group'
 
-    def grow(self, seconds):
-        grow_rate = 10
-
-        n = seconds // grow_rate
-        print(seconds, "seconds since last connection.")
-        print("growing", n, "times")
-
     def connect(self):
         # Join room group
         self.group_add()
@@ -140,7 +135,7 @@ class GridConsumer(BaseConsumer):
         if action == 'water':
             if plot.has_soil():
                 plot.soil.water_level = min(
-                    plot.soil.water_level + 3,  # TODO slightly random
+                    plot.soil.water_level + 10,  # TODO slightly random
                     models.Soil.MAX_WATER_LEVEL
                 )
                 plot.soil.save()
@@ -208,36 +203,44 @@ class GridConsumer(BaseConsumer):
             'plot': plot.as_dict(),
         })
 
+    def save_disconnect(self):
+        # TODO add logic to detect when last client has disconnected
+        # --> django-channels-presence package?
+        print('Last client disconnecting -- saving disconnect')
+        models.Disconnection().save()
+
     def calculate_growth(self):
         now = datetime.datetime.now(tz=UTC)
-        this_connection = models.Connection(timestamp=now)
 
-        if models.Connection.objects.count() > 0:
-            # Get time since the last connection
-            last = models.Connection.objects.latest('timestamp').timestamp
-            seconds_since_last_connection = (now - last).seconds
+        if models.Disconnection.objects.count() > 0:
+            # Get time since the last disconnection
+            last_disconnect = models.Disconnection.objects.latest(
+                'timestamp').timestamp
+
+            # If no one has disconnected since the last disconnect, don't grow
+            if last_disconnect.used:
+                return
 
             # Calculate the number of times the garden should have grown
-            n = int(seconds_since_last_connection //
+            seconds_since_last_disconnect = (now - last_disconnect).seconds
+            n = int(seconds_since_last_disconnect //
                     (86400/settings.GROWTH_RATE))
 
+            # Mark the last disconnection as used
+            last_disconnect.update(used=True)
+
             # Run the grow function n times
-            print(seconds_since_last_connection,
+            print("--- NEW CONNECTION -- GROWTH ---")
+            print(seconds_since_last_disconnect,
                   "seconds since last connection.")
-            print("growing garden", n, "times.")
-            for i in range(n):
-                self.grow_garden()
+            print("Growing garden", n, "times.")
+            print("--------------------------------")
 
-        # Save the current connection as the most recent connection
-        this_connection.save()
+            plots = models.Plot.objects.all()
+            for _ in range(n):
+                for plot in plots:
+                    if plot.has_soil() and plot.soil.water_level > 0:
+                        plot.soil.water_level -= 1
+                        plot.changed = True
 
-    def grow_garden(self):
-        plots = models.Plot.objects.all()
-        for plot in plots:
-            if plot.has_soil():
-                plot.soil.water_level -= 1
-                plot.soil.full_clean()
-                plot.soil.save()
-                plot.save()
-
-        # self.send_grid_populate()
+            [plot.save() for plot in plots if hasattr(plot, 'changed')]
