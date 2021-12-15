@@ -2,23 +2,24 @@
 import json
 import datetime
 from pytz import UTC
-from asgiref.sync import async_to_sync as a2s
+from asgiref.sync import async_to_sync as a2s, sync_to_async as s2a
 from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
+from channels_presence.models import Room
 
-from . import models, settings
-
-import inspect
+from . import models, settings, tasks
 
 
-class BaseConsumer(WebsocketConsumer):
+# Base classes
+
+class BaseSyncConsumer(WebsocketConsumer):
     def group_send(self, *args, **kwargs):
         return a2s(self.channel_layer.group_send)(self.group_name, *args, **kwargs)
 
     def group_add(self, *args, **kwargs):
-        return a2s(self.channel_layer.group_add)(self.group_name, self.channel_name)
+        return Room.objects.add(self.group_name, self.channel_name)
 
     def group_discard(self, *args, **kwargs):
-        return a2s(self.channel_layer.group_discard)(self.group_name, self.channel_name)
+        return Room.objects.remove(self.group_name, self.channel_name)
 
     def server_error(self, message):
         self.send({
@@ -27,14 +28,34 @@ class BaseConsumer(WebsocketConsumer):
         })
 
 
-class CursorConsumer(AsyncWebsocketConsumer):
+class BaseAsyncConsumer(AsyncWebsocketConsumer):
+    async def group_send(self, *args, **kwargs):
+        return await self.channel_layer.group_send(self.group_name, *args, **kwargs)
+
+    async def group_add(self, *args, **kwargs):
+        return await s2a(Room.objects.add)(self.group_name, self.channel_name)
+
+    async def group_discard(self, *args, **kwargs):
+        return await s2a(Room.objects.remove)(self.group_name, self.channel_name)
+
+    async def server_error(self, message):
+        await self.send({
+            "type": "server_error",
+            "message": message,
+        })
+
+
+# Consumers
+
+class CursorConsumer(BaseAsyncConsumer):
     group_name = "cursor_group"
 
     async def connect(self):
+        # Generate an ID from the random channel name
         self.client_id = self.channel_name[-10:]
 
-        # Join room group
-        await self.channel_layer.group_add(self.group_name, self.channel_name)
+        # Join room (channels_presence handles layer group)
+        self.room = await s2a(Room.objects.add)(self.group_name, self.channel_name)
         await self.accept()
 
         # Notify user of their client id
@@ -50,7 +71,7 @@ class CursorConsumer(AsyncWebsocketConsumer):
                 "type": "send_cursor_disconnected",
                 "client": self.client_id
             })
-        await self.channel_layer.group_discard(self.group_name, self.channel_name)
+        await s2a(Room.objects.remove)(self.group_name, self.channel_name)
 
     # Receive message from WebSocket
     async def receive(self, text_data):
@@ -84,12 +105,12 @@ class CursorConsumer(AsyncWebsocketConsumer):
         }))
 
 
-class GridConsumer(BaseConsumer):
+class GridConsumer(BaseSyncConsumer):
     group_name = 'grid_group'
 
     def connect(self):
         # Join room group
-        self.group_add()
+        self.room = Room.objects.add(self.group_name, self.channel_name)
         # Accept the connection
         self.accept()
         # Update the grid based on the last time someone logged in
@@ -123,15 +144,25 @@ class GridConsumer(BaseConsumer):
             'data': plots
         }))
 
+    def group_send_plot_update(self, plot):
+        self.group_send({
+            'type': 'send_grid_update',
+            'grid_x': plot.grid_x,
+            'grid_y': plot.grid_y,
+            'plot': plot.as_dict(),
+        })
+
     def update_plot(self, text_data_json):
         action = text_data_json['action']
         params = text_data_json['params']
 
+        # Get the data
         plot = models.Plot.objects.get(
             grid_x=params['grid_x'],
             grid_y=params['grid_y']
         )
 
+        # Mutate the data
         if action == 'water':
             if plot.has_soil():
                 plot.soil.water_level = min(
@@ -193,15 +224,12 @@ class GridConsumer(BaseConsumer):
                     "A plot must have soil before a plant can be added."
                 )
 
+        # Validate and write to the db
         plot.full_clean()
         plot.save()
 
-        self.group_send({
-            'type': 'send_grid_update',
-            'grid_x': params['grid_x'],
-            'grid_y': params['grid_y'],
-            'plot': plot.as_dict(),
-        })
+        # Notify other users of the plot update
+        self.group_send_plot_update(plot)
 
     def save_disconnect(self):
         # TODO add logic to detect when last client has disconnected
@@ -209,38 +237,36 @@ class GridConsumer(BaseConsumer):
         print('Last client disconnecting -- saving disconnect')
         models.Disconnection().save()
 
-    def calculate_growth(self):
-        now = datetime.datetime.now(tz=UTC)
+    def manual_step(self):
+        tasks.step_once()
+        # now = datetime.datetime.now(tz=UTC)
+        # if models.Disconnection.objects.count() > 0:
+        #     # Get time since the last disconnection
+        #     last_disconnect = models.Disconnection.objects.latest(
+        #         'timestamp').timestamp
 
-        if models.Disconnection.objects.count() > 0:
-            # Get time since the last disconnection
-            last_disconnect = models.Disconnection.objects.latest(
-                'timestamp').timestamp
+        #     # If no one has disconnected since the last disconnect, don't grow
+        #     if last_disconnect.used:
+        #         return
 
-            # If no one has disconnected since the last disconnect, don't grow
-            if last_disconnect.used:
-                return
+        #     # Calculate the number of times the garden should have grown
+        #     seconds_since_last_disconnect = (now - last_disconnect).seconds
+        #     n = int(seconds_since_last_disconnect //
+        #             (86400/settings.GROWTH_RATE))
 
-            # Calculate the number of times the garden should have grown
-            seconds_since_last_disconnect = (now - last_disconnect).seconds
-            n = int(seconds_since_last_disconnect //
-                    (86400/settings.GROWTH_RATE))
+        #     # Mark the last disconnection as used
+        #     last_disconnect.update(used=True)
 
-            # Mark the last disconnection as used
-            last_disconnect.update(used=True)
+        #     # Run the grow function n times
+        #     print("--- NEW CONNECTION -- GROWTH ---")
+        #     print(seconds_since_last_disconnect,
+        #           "seconds since last connection.")
+        #     print("Growing garden", n, "times.")
+        #     print("--------------------------------")
 
-            # Run the grow function n times
-            print("--- NEW CONNECTION -- GROWTH ---")
-            print(seconds_since_last_disconnect,
-                  "seconds since last connection.")
-            print("Growing garden", n, "times.")
-            print("--------------------------------")
-
-            plots = models.Plot.objects.all()
-            for _ in range(n):
-                for plot in plots:
-                    if plot.has_soil() and plot.soil.water_level > 0:
-                        plot.soil.water_level -= 1
-                        plot.changed = True
-
-            [plot.save() for plot in plots if hasattr(plot, 'changed')]
+        #     plots = models.Plot.objects.all()
+        #     for _ in range(n):
+        #         for plot in plots:
+        #             if plot.has_soil() and plot.soil.water_level > 0:
+        #                 plot.soil.water_level -= 1
+        #                 plot.save()

@@ -40,6 +40,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "communitygarden",
     "channels",
+    "channels_presence",
+    "workers",
+]
+
+# Apps for workers package to ignore
+WORKERS_IGNORE_APPS = [
+    "channels_presence"
 ]
 
 MIDDLEWARE = [
@@ -139,16 +146,13 @@ CHANNEL_LAYERS = {
 }
 
 
-def every_n_seconds(n):
-    return 86400 / n
-
-
 def every_n_minutes(n):
-    return 1440 / n
+    return 60 * n
 
 
 def every_n_hours(n):
-    return 24 / n
+    return 60 * 60 * n
 
 
-GROWTH_RATE = every_n_hours(12)  # Grow this many times per day
+# Run a growth step every GROWTH_RATE seconds
+GROWTH_RATE = 60

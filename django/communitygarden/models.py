@@ -1,14 +1,29 @@
-from django.db import models as m
+from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from . import utils
 
-class Disconnection(m.Model):
+# Base model class
+
+
+class CleanModel(models.Model):
+    """
+    A base model class for self-validating and -normalizing models.
+    Runs full_clean() before calling save().
+    """
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super(CleanModel, self).save(*args, **kwargs)
+
+
+class Disconnection(models.Model):
     """
     Table containing information about the last
     disconnection from the app.
     """
-    timestamp = m.DateTimeField(auto_now_add=True)
-    used = m.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    used = models.BooleanField(default=False)
 
     # Store only the last 10 connections
     def save(self, *args, **kwargs):
@@ -21,7 +36,7 @@ class Disconnection(m.Model):
         super(Disconnection, self).save(*args, **kwargs)
 
 
-class Plot(m.Model):
+class Plot(models.Model):
     """
     grid position
     soil (optional)
@@ -31,23 +46,23 @@ class Plot(m.Model):
     associated history entries
     """
 
-    grid_x = m.IntegerField()
-    grid_y = m.IntegerField()
-    soil = m.OneToOneField(
+    grid_x = models.IntegerField()
+    grid_y = models.IntegerField()
+    soil = models.OneToOneField(
         'Soil',
-        on_delete=m.CASCADE,
+        on_delete=models.CASCADE,
         related_name="plot_in",
         blank=True,
         null=True
     )
-    plant = m.OneToOneField(
+    plant = models.OneToOneField(
         'Plant',
-        on_delete=m.CASCADE,
+        on_delete=models.CASCADE,
         related_name="plot_in",
         blank=True,
         null=True,
     )
-    # last_edited = m.DateTimeField()
+    # last_edited = models.DateTimeField()
 
     def has_soil(self):
         return isinstance(self.soil, Soil)
@@ -55,8 +70,37 @@ class Plot(m.Model):
     def has_plant(self):
         return isinstance(self.plant, Plant)
 
+    def save(self, *args, **kwargs):
+        """
+        Wrapper for the default save method.
+        Saves any existing child objects (plant, soil).
+        Child objects should all inherit from CleanModel, so 
+        they'll have their fields validated before saving.
+        """
+        if self.has_soil():
+            self.soil.save()
+        if self.has_plant():
+            self.plant.save()
+
+        super(Plot, self).save(*args, **kwargs)
+
+    def step(self, *args, **kwargs):
+        """
+        One time step for a plot.
+        Runs a single step for any child objects.
+        """
+        do_save = False
+        if self.has_soil():
+            do_save = True
+            self.soil.step()
+        if self.has_plant():
+            do_save = True
+            self.plant.step()
+        if do_save:
+            self.save()
+
     def __str__(self):
-        return f'Plot at [{str(self.grid_x)}, {str(self.grid_y)}]'
+        return f'Plot[{str(self.grid_x)}, {str(self.grid_y)}]'
 
     def as_dict(self):
         soil = self.soil.as_dict() if self.has_soil() else None
@@ -69,17 +113,8 @@ class Plot(m.Model):
             "plant": plant,
         }
 
-    # Store only the last 10 connections
-    def save(self, *args, **kwargs):
-        if self.has_soil():
-            self.soil.save()
-        if self.has_plant():
-            self.plant.save()
 
-        super(Plot, self).save(*args, **kwargs)
-
-
-class Soil(m.Model):
+class Soil(CleanModel):
     """
     A single instance of soil in a plot.
     water level
@@ -89,13 +124,8 @@ class Soil(m.Model):
     """
     MIN_WATER_LEVEL = 0
     MAX_WATER_LEVEL = 100
-    # soil_type = m.TextField(choices=[
-    #     ("SAND", 4),
-    #     ("SILT", 3),
-    #     ("LOAM", 2),
-    #     ("CLAY", 1),
-    # ])
-    water_level = m.SmallIntegerField(
+
+    water_level = models.SmallIntegerField(
         default=50,
         validators=[
             MinValueValidator(MIN_WATER_LEVEL),
@@ -103,8 +133,30 @@ class Soil(m.Model):
         ]
     )
 
+    # soil_type = models.TextField(choices=[
+    #     ("SAND", 4),
+    #     ("SILT", 3),
+    #     ("LOAM", 2),
+    #     ("CLAY", 1),
+    # ])
+
+    def clean(self, *args, **kwargs):
+        # Clamp the water level
+        self.water_level = utils.clamp(
+            self.water_level, self.MIN_WATER_LEVEL, self.MAX_WATER_LEVEL)
+        super(Soil, self).clean(*args, **kwargs)
+
+    def step(self):
+        """
+        One time step for the soil.
+
+        Only called from within Plot.save
+        Plot.save also handles calling Soil.save
+        """
+        self.water_level -= 1
+
     def __str__(self):
-        return f'Soil in plot: {self.plot_in}'
+        return f'Soil in: {self.plot_in}'
 
     def as_dict(self):
         return {
@@ -112,7 +164,7 @@ class Soil(m.Model):
         }
 
 
-class Plant(m.Model):
+class Plant(CleanModel):
     """
     A single instance of a plant in a plot.
     species
@@ -125,8 +177,8 @@ class Plant(m.Model):
     MIN_HEALTH = 0
     MAX_HEALTH = 100
 
-    species = m.ForeignKey('PlantSpecies', on_delete=m.CASCADE)
-    health = m.SmallIntegerField(
+    species = models.ForeignKey('PlantSpecies', on_delete=models.CASCADE)
+    health = models.SmallIntegerField(
         default=100,
         validators=[
             MinValueValidator(MIN_HEALTH),
@@ -134,8 +186,21 @@ class Plant(m.Model):
         ]
     )
 
+    def step(self):
+        """
+        One time step for a plant.
+        Only called from within Plot.save
+        """
+        if self.plot_in.soil.water_level <= 5:
+            self.health -= 1
+
+    def clean(self, *args, **kwargs):
+        self.health = utils.clamp(
+            self.health, self.MIN_HEALTH, self.MAX_HEALTH)
+        super(Plant, self).clean(self, *args, **kwargs)
+
     def __str__(self):
-        return f'{self.species} in plot: {self.plot_in}'
+        return f'{self.species} in: {self.plot_in}'
 
     def as_dict(self):
         return {
@@ -144,13 +209,13 @@ class Plant(m.Model):
         }
 
 
-class PlantSpecies(m.Model):
+class PlantSpecies(models.Model):
     """
     A species of plant.
     """
-    id = m.IntegerField(primary_key=True)
-    name = m.TextField()
-    emoji = m.TextField()
+    id = models.IntegerField(primary_key=True)
+    name = models.TextField()
+    emoji = models.TextField()
 
     def __str__(self):
         return self.name
@@ -163,7 +228,7 @@ class PlantSpecies(m.Model):
         }
 
 
-# class HistoryEntry(m.Model):
+# class HistoryEntry(models.Model):
     """
     An entry in the history of the garden. Contains information about
     the user, the action taken, the action target, and a timestamp/

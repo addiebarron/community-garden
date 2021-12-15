@@ -1,7 +1,8 @@
 import { writable, derived, get } from "svelte/store";
 import { API_URL } from "$lib/store/settings";
 
-// WebSocket wrapper
+// WebSocket wrapper class
+
 class Socket {
   constructor(name) {
     this.name = name;
@@ -45,6 +46,8 @@ class Socket {
     });
   }
 }
+
+// Exports
 
 export let sockets = {
   grid: new Socket("grid"),

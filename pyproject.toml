@@ -6,9 +6,11 @@ version = "0.1.0"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "^3.2.7"
 channels = "^3.0.4"
 channels-redis = "^3.3.0"
+django-channels-presence = "^1.0.0"
+Django = "3.1.5"
+django-workers = {git = "https://github.com/addiebarron/django-workers.git", rev = "ignore-apps"}
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.7"
