@@ -4,78 +4,44 @@ import { printPlotInfo } from "./data";
 const commands = {
   plantHere: {
     description: "Plant a new plant on this plot.",
-    run(p) {
-      const socketData = {
-        type: "update",
-        action: "plant",
-        params: {
-          grid_x: p.coords[0],
-          grid_y: p.coords[1],
-          id: Math.floor(Math.random() * 10),
-        },
-      };
-      sockets.grid.send(JSON.stringify(socketData));
+    run(plot) {
+      sendPlotAction('plant', plot, { id: Math.floor(Math.random() * 10) })
     },
   },
 
   uprootHere: {
     description: "Uproot plant on this plot.",
-    run(p) {
-      const socketData = {
-        type: "update",
-        action: "uproot",
-        params: {
-          grid_x: p.coords[0],
-          grid_y: p.coords[1],
-        },
-      };
-      sockets.grid.send(JSON.stringify(socketData));
-    },
+    run: new BasicPlotAction('uproot'),
   },
 
   addSoil: {
     description: "Add soil to this plot.",
-    run(p) {
-      const socketData = {
-        type: "update",
-        action: "soilify",
-        params: {
-          grid_x: p.coords[0],
-          grid_y: p.coords[1],
-        },
-      };
-      sockets.grid.send(JSON.stringify(socketData));
-    },
+    run: new BasicPlotAction('soilify'),
   },
 
   removeSoil: {
     description: "Remove soil from this plot.",
-    run(p) {
-      const socketData = {
-        type: "update",
-        action: "desoilify",
-        params: {
-          grid_x: p.coords[0],
-          grid_y: p.coords[1],
-        },
-      };
-      sockets.grid.send(JSON.stringify(socketData));
-    },
+    run: new BasicPlotAction('desoilify')
   },
 
   waterPlot: {
     description: "Water this plot.",
-    run(p) {
-      const socketData = {
-        type: "update",
-        action: "water",
-        params: {
-          grid_x: p.coords[0],
-          grid_y: p.coords[1],
-        },
-      };
-      sockets.grid.send(JSON.stringify(socketData));
-    },
+    run: new BasicPlotAction('water')
+  },
+
+  deWaterPlot: {
+    description: "Remove water form this plot.",
+    run: new BasicPlotAction('dev_dewater')
+  },
+
+  addHealth: {
+    description: "Add health to this plant.",
+    run: new BasicPlotAction('dev_addhealth'),
+  },
+
+  removeHealth: {
+    description: "Remove health from this plant.",
+    run: new BasicPlotAction('dev_removehealth'),
   },
 
   printPlotInfo: {
@@ -100,6 +66,22 @@ const commands = {
   },
 };
 
+function sendPlotAction(action, plot, params = {}) {
+  sockets.grid.send(JSON.stringify({
+    action: action,
+    type: 'update',
+    params: {
+      grid_x: plot.coords[0],
+      grid_y: plot.coords[1],
+      ...params,
+    },
+  }));
+}
+
+function BasicPlotAction(action) {
+  return (plot) => sendPlotAction(action, plot);
+}
+
 export function getCommands(plot) {
   const available = [];
   if (plot.index == 0) {
@@ -113,6 +95,7 @@ export function getCommands(plot) {
       available.push(commands.addSoil);
     } else {
       available.push(commands.waterPlot);
+      available.push(commands.deWaterPlot)
       if (!plot.plant) {
         available.push(commands.removeSoil);
         available.push(commands.plantHere);
@@ -120,6 +103,8 @@ export function getCommands(plot) {
     }
     if (plot.plant) {
       available.push(commands.uprootHere);
+      available.push(commands.addHealth);
+      available.push(commands.removeHealth);
     }
   }
   return available;

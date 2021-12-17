@@ -12,8 +12,13 @@ export function printPlotInfo(data) {
 
 export const DATA = writable([]);
 
+export let currentPlot = derived(
+  [DATA, clientCursor.index],
+  ([$g, $i]) => $g[$i]
+);
+
 // Constructing garden array from API data
-export function populateGarden(data) {
+export function hydrateData(data) {
   data.unshift({
     id: 0,
     grid_x: 0,
@@ -37,7 +42,3 @@ export function populateGarden(data) {
   return garden;
 }
 
-export let currentPlot = derived(
-  [DATA, clientCursor.index],
-  ([$g, $i]) => $g[$i]
-);

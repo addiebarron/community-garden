@@ -49,3 +49,5 @@ export class PlayerCursor extends Cursor {
 }
 
 export let clientCursor = new PlayerCursor();
+
+export let otherCursors = writable([]);

@@ -4,16 +4,10 @@ import json
 # from .. import models
 
 BASEPATH = os.path.dirname(os.path.realpath(__file__))
-
-
-def writeJSONFile(array_or_dict, filename):
-    fout = open(f'{BASEPATH}/{filename}', 'w')
-    fout.write(json.dumps(array_or_dict, indent=2))
-    fout.close()
-
+data = []
 
 # Empty garden fixture
-garden = [{
+data += [{
     "model": "communitygarden.plot",
     "fields": {
         "grid_x": i,
@@ -22,8 +16,6 @@ garden = [{
         "plant": None,
     }
 } for i in range(1, 21) for j in range(1, 21)]
-
-writeJSONFile(garden, 'emptygarden.json')
 
 # Species fixture
 species_base = [
@@ -38,7 +30,7 @@ species_base = [
     ("Wheat", "🌾"),
     ("Clover", "🍀")
 ]
-species = [{
+data += [{
     "model": "communitygarden.plantspecies",
     "fields": {
         "id": i,
@@ -47,8 +39,9 @@ species = [{
     }
 } for i, info in enumerate(species_base)]
 
-writeJSONFile(species, 'species.json')
-
+fout = open(f'{BASEPATH}/data.json', 'w')
+fout.write(json.dumps(data, indent=2))
+fout.close()
 
 # Test
 # allplots = list(models.Plot.objects.all().values())

@@ -1,22 +1,5 @@
 <script>
-  import { GRID_X, GRID_Y } from "$lib/store/settings";
-
   export let i, root, plot;
-
-  let corners = {
-    top: i <= GRID_X,
-    right: i % GRID_X == 0,
-    bottom: i > GRID_X * (GRID_Y - 1),
-    left: i % GRID_X == 1,
-  };
-
-  function r(n) {
-    return n * (Math.random() - 0.5);
-  }
-
-  // $: bg = plot.soil
-  //   ? `hsl(8, 9%, ${60 - plot.soil.water_level / 3}%)`
-  //   : `hsl(120, 50%, ${70}%)`;
 </script>
 
 <div
@@ -26,10 +9,6 @@
   on:keydown|preventDefault
   class="grid-item grid-item-{i}"
   class:with-soil={!!plot.soil}
-  class:grid-item-top={corners.top}
-  class:grid-item-right={corners.right}
-  class:grid-item-bottom={corners.bottom}
-  class:grid-item-left={corners.left}
   data-index={i}
 >
   <!-- {plot.acoord} -->
@@ -46,10 +25,17 @@
   :root {
     --edge-border: dashed 7px rgb(36, 36, 36);
   }
-  .grid-item {
+  div {
     position: relative;
     color: white;
-    /* box-shadow: 0 0 0 1px black; */
+  }
+  div:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     outline: solid 1px black;
   }
   .grid-item.with-soil {
@@ -85,9 +71,4 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  /* prettier-ignore */
-  .grid-item.grid-item-top { border-top: var(--edge-border); } /* prettier-ignore */
-  .grid-item.grid-item-right { border-right: var(--edge-border); } /* prettier-ignore */
-  .grid-item.grid-item-bottom { border-bottom: var(--edge-border); } /* prettier-ignore */
-  .grid-item.grid-item-left { border-left: var(--edge-border); }
 </style>

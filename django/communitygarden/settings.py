@@ -155,4 +155,4 @@ def every_n_hours(n):
 
 
 # Run a growth step every GROWTH_RATE seconds
-GROWTH_RATE = 60
+GROWTH_RATE = 5

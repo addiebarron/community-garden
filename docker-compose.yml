@@ -21,7 +21,7 @@ services:
     ports:
       - 9090:8000
     volumes:
-      - ./django:/app
+      - ./django/communitygarden:/app/communitygarden
     depends_on:
       # - db
       - redis

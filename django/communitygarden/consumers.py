@@ -9,7 +9,7 @@ from channels_presence.models import Room
 from . import models, settings, tasks
 
 
-# Base classes
+# Base consumer classes
 
 class BaseSyncConsumer(WebsocketConsumer):
     def group_send(self, *args, **kwargs):
@@ -22,10 +22,13 @@ class BaseSyncConsumer(WebsocketConsumer):
         return Room.objects.remove(self.group_name, self.channel_name)
 
     def server_error(self, message):
-        self.send({
+        self.send(text_data=json.dumps({
             "type": "server_error",
             "message": message,
-        })
+        }))
+
+    class Meta:
+        abstract = True
 
 
 class BaseAsyncConsumer(AsyncWebsocketConsumer):
@@ -39,10 +42,13 @@ class BaseAsyncConsumer(AsyncWebsocketConsumer):
         return await s2a(Room.objects.remove)(self.group_name, self.channel_name)
 
     async def server_error(self, message):
-        await self.send({
+        await self.send(text_data=json.dumps({
             "type": "server_error",
             "message": message,
-        })
+        }))
+
+    class Meta:
+        abstract = True
 
 
 # Consumers
@@ -59,18 +65,18 @@ class CursorConsumer(BaseAsyncConsumer):
         await self.accept()
 
         # Notify user of their client id
-        await self.send(text_data=json.dumps({
-            "type": "cursor_connected",
-            "client": self.client_id
-        }))
+        await self.group_send({
+            "type": "send_cursor_update",
+            "client": self.client_id,
+            "coords": [0, 0]
+        })
 
     async def disconnect(self, close_code):
         # Leave room group
-        await self.channel_layer.group_send(
-            self.group_name, {
-                "type": "send_cursor_disconnected",
-                "client": self.client_id
-            })
+        await self.group_send({
+            "type": "send_cursor_disconnect",
+            "client": self.client_id
+        })
         await s2a(Room.objects.remove)(self.group_name, self.channel_name)
 
     # Receive message from WebSocket
@@ -78,29 +84,25 @@ class CursorConsumer(BaseAsyncConsumer):
         text_data_json = json.loads(text_data)
         coords = text_data_json["coords"]
 
-        # Forward the data to the rest of the group
-        await self.channel_layer.group_send(
-            self.group_name,
-            {
-                "type": "send_cursor_update",
-                "client": self.client_id,
-                "coords": coords,
-            },
-        )
+        await self.group_send({
+            "type": "send_cursor_update",
+            "client": self.client_id,
+            "coords": coords,
+        })
 
     # Notify room of cursor_update
     async def send_cursor_update(self, event):
         if self.client_id != event['client']:
             await self.send(text_data=json.dumps({
-                'type': 'cursor_update',
+                'type': 'cursor.update',
                 'client': event['client'],
                 'coords': event['coords'],
             }))
 
     # Notify room of cursor_disconnect
-    async def send_cursor_disconnected(self, event):
+    async def send_cursor_disconnect(self, event):
         await self.send(text_data=json.dumps({
-            'type': 'cursor_disconnected',
+            'type': 'cursor.disconnect',
             'client': event['client'],
         }))
 
@@ -113,66 +115,61 @@ class GridConsumer(BaseSyncConsumer):
         self.room = Room.objects.add(self.group_name, self.channel_name)
         # Accept the connection
         self.accept()
-        # Update the grid based on the last time someone logged in
-        self.calculate_growth()
         # Send grid data to the client
-        self.send_grid_populate()
+        self.send_grid_full_update()
 
     def disconnect(self, close_code):
         self.group_discard()
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        # message_type = text_data_json['type']
 
-        # if message_type == 'update':
-        self.update_plot(text_data_json)
-
-    def send_grid_update(self, event):
-        # Push changes to all connected clients
-        self.send(text_data=json.dumps({
-            'type': 'grid_update',
-            'grid_x': event['grid_x'],
-            'grid_y': event['grid_y'],
-            'plot': event['plot'],
-        }))
-
-    def send_grid_populate(self):
-        plots = [plot.as_dict() for plot in models.Plot.objects.all()]
-        self.send(text_data=json.dumps({
-            'type': 'grid_populate',
-            'data': plots
-        }))
-
-    def group_send_plot_update(self, plot):
-        self.group_send({
-            'type': 'send_grid_update',
-            'grid_x': plot.grid_x,
-            'grid_y': plot.grid_y,
-            'plot': plot.as_dict(),
-        })
-
-    def update_plot(self, text_data_json):
+        print(text_data_json)
         action = text_data_json['action']
         params = text_data_json['params']
 
+        self.update_plot(action, params)
+
+    def send_grid_plot_update(self, event):
+        # Notify the client of an update at a single plot
+        self.send(text_data=json.dumps({
+            'type': 'grid.plotUpdate',
+            'plot': event['plot'],
+        }))
+
+    def send_grid_full_update(self, event={}):
+        # Notify the client to update the whole grid
+        plots = [plot.as_dict() for plot in models.Plot.objects.all()]
+        self.send(text_data=json.dumps({
+            'type': 'grid.fullUpdate',
+            'grid': plots
+        }))
+
+    def update_plot(self, action, params):
         # Get the data
         plot = models.Plot.objects.get(
             grid_x=params['grid_x'],
             grid_y=params['grid_y']
         )
 
+        print(action)
         # Mutate the data
         if action == 'water':
             if plot.has_soil():
-                plot.soil.water_level = min(
-                    plot.soil.water_level + 10,  # TODO slightly random
-                    models.Soil.MAX_WATER_LEVEL
-                )
+                plot.soil.water_level += 10
                 plot.soil.save()
             else:
                 return self.server_error(
                     "A plot must have soil in order to be watered."
+                )
+
+        elif action == 'dev_dewater':
+            if plot.has_soil():
+                plot.soil.water_level -= 10
+                plot.soil.save()
+            else:
+                return self.server_error(
+                    "A plot must have soil in order to be unwatered."
                 )
 
         elif action == 'soilify':
@@ -217,56 +214,36 @@ class GridConsumer(BaseSyncConsumer):
 
         elif action == 'uproot':
             if plot.has_plant():
-                models.Plant.objects.get(id=plot.plant.id).delete()
+                plot.plant.delete()
                 plot.plant = None
             else:
                 return self.server_error(
                     "A plot must have soil before a plant can be added."
                 )
 
-        # Validate and write to the db
-        plot.full_clean()
+        elif action == 'dev_removehealth':
+            if plot.has_plant():
+                plot.plant.health -= 10
+            else:
+                return self.server_error(
+                    "A plot must have a plant in order to affect its health."
+                )
+
+        elif action == 'dev_addhealth':
+            if plot.has_plant():
+                plot.plant.health += 10
+            else:
+                return self.server_error(
+                    "A plot must have a plant in order to affect its health."
+                )
+
         plot.save()
 
-        # Notify other users of the plot update
-        self.group_send_plot_update(plot)
+        # Notify all channels of the plot update
+        self.group_send({
+            'type': 'send_grid_plot_update',
+            'plot': plot.as_dict(),
+        })
 
-    def save_disconnect(self):
-        # TODO add logic to detect when last client has disconnected
-        # --> django-channels-presence package?
-        print('Last client disconnecting -- saving disconnect')
-        models.Disconnection().save()
-
-    def manual_step(self):
-        tasks.step_once()
-        # now = datetime.datetime.now(tz=UTC)
-        # if models.Disconnection.objects.count() > 0:
-        #     # Get time since the last disconnection
-        #     last_disconnect = models.Disconnection.objects.latest(
-        #         'timestamp').timestamp
-
-        #     # If no one has disconnected since the last disconnect, don't grow
-        #     if last_disconnect.used:
-        #         return
-
-        #     # Calculate the number of times the garden should have grown
-        #     seconds_since_last_disconnect = (now - last_disconnect).seconds
-        #     n = int(seconds_since_last_disconnect //
-        #             (86400/settings.GROWTH_RATE))
-
-        #     # Mark the last disconnection as used
-        #     last_disconnect.update(used=True)
-
-        #     # Run the grow function n times
-        #     print("--- NEW CONNECTION -- GROWTH ---")
-        #     print(seconds_since_last_disconnect,
-        #           "seconds since last connection.")
-        #     print("Growing garden", n, "times.")
-        #     print("--------------------------------")
-
-        #     plots = models.Plot.objects.all()
-        #     for _ in range(n):
-        #         for plot in plots:
-        #             if plot.has_soil() and plot.soil.water_level > 0:
-        #                 plot.soil.water_level -= 1
-        #                 plot.save()
+    # def manual_step(self):
+    #     tasks.step_once()

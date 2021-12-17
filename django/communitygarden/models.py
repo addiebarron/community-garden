@@ -1,20 +1,33 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
 
-from . import utils
-
-# Base model class
+from .utils import clamp, print_in_main_process as log
 
 
 class CleanModel(models.Model):
     """
     A base model class for self-validating and -normalizing models.
-    Runs full_clean() before calling save().
+    Runs clean() and clean_fields() before calling save().
     """
 
     def save(self, *args, **kwargs):
-        self.full_clean()
-        super(CleanModel, self).save(*args, **kwargs)
+        # Clean first, to normalize values if needed
+        # Now validate data
+        try:
+            self.clean()
+            self.clean_fields()
+            self.validate_unique()
+        except ValidationError as e:
+            print(e)
+        finally:
+            super(CleanModel, self).save(*args, **kwargs)
+
+    def clean(self, *args, **kwargs):
+        super(CleanModel, self).clean(*args, **kwargs)
+
+    class Meta:
+        abstract = True
 
 
 class Disconnection(models.Model):
@@ -36,7 +49,7 @@ class Disconnection(models.Model):
         super(Disconnection, self).save(*args, **kwargs)
 
 
-class Plot(models.Model):
+class Plot(CleanModel):
     """
     grid position
     soil (optional)
@@ -63,6 +76,9 @@ class Plot(models.Model):
         null=True,
     )
     # last_edited = models.DateTimeField()
+
+    class Meta:
+        unique_together = ('grid_x', 'grid_y')
 
     def has_soil(self):
         return isinstance(self.soil, Soil)
@@ -142,7 +158,7 @@ class Soil(CleanModel):
 
     def clean(self, *args, **kwargs):
         # Clamp the water level
-        self.water_level = utils.clamp(
+        self.water_level = clamp(
             self.water_level, self.MIN_WATER_LEVEL, self.MAX_WATER_LEVEL)
         super(Soil, self).clean(*args, **kwargs)
 
@@ -192,12 +208,18 @@ class Plant(CleanModel):
         Only called from within Plot.save
         """
         if self.plot_in.soil.water_level <= 5:
+            log(f'{self.species} on {self.plot_in} has lost 1 health. Now {self.health}.')
             self.health -= 1
+        elif self.health <= 0:
+            log(f'{self.species} on {self.plot_in} has died.')
+            # TODO make this work!
+            self.plot_in.plant = None
+            self.delete()
 
     def clean(self, *args, **kwargs):
-        self.health = utils.clamp(
+        self.health = clamp(
             self.health, self.MIN_HEALTH, self.MAX_HEALTH)
-        super(Plant, self).clean(self, *args, **kwargs)
+        super(Plant, self).clean(*args, **kwargs)
 
     def __str__(self):
         return f'{self.species} in: {self.plot_in}'

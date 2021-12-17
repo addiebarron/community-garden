@@ -1,9 +1,8 @@
 <script>
   import { ZOOM_LEVEL } from "$lib/store/settings";
 
-  export let cur, i;
+  export let client, cursor, i;
 
-  const { client, cursor } = cur;
   let x = cursor.x,
     y = cursor.y;
   //const isUser = client == "user";
@@ -19,11 +18,11 @@
 <div
   class="cursor-{client}"
   style="
-    top: {size * ($y - 1) - 1}px; 
     left: {size * ($x - 1) - 1}px;
-    width: {size}px;
-    height: {size}px;
-    border-color: {color};
+    top: {size * ($y - 1) - 1}px; 
+    width: {size + 2}px;
+    height: {size + 2}px;
+    box-shadow: inset 0 0 0 3px {color};
   "
 >
   <span style="background-color: {color};">
@@ -32,13 +31,12 @@
 </div>
 
 <style>
-  [class^="cursor-"] {
+  div {
     pointer-events: none;
     position: absolute;
-    border: solid 1px;
     overflow: hidden;
   }
-  [class^="cursor-"] span {
+  div > span {
     position: absolute;
     top: 0;
     left: 0;
